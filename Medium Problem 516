@@ -1,0 +1,36 @@
+This problem can easily be reduced to Longest Common Sequence (LCS) problem. 
+We have to determine the length of the longest palindromic subsequence, which means the length of the longest subsequence with the same left-to-right and right-to-left traversal. Let's say we are given a string X="abfrbaf." Its longest palindromic subsequence is "abrba." If we take another string, which is just reverse of the given string, i.e., Y="fabrfba." Through careful recognization, we can see that the longest common subsequence of X and Y is "abrba" which is the same as the longest palindromic subsequence of string X. Hence, we can implement this program using a dynamic programming approach in the same way we used to solve the longest common subsequence problem.
+We will be using a 2D array to find the LCS's length (X, Y).
+Of Note: The length of the longest common subsequence of two strings X and Y is zero if any of the two strings is null.  Hence we will be initializing the first row and first column with 0. 
+Let's say the length of the two strings is n, and we start comparing the letters of the two strings from the right end. If the characters match, we will increase the LCS's length by one and apply the same process in the n-1 length of both the strings. If the character doesn't match, then we have two choices. 
+Choice 1: Decrease the length of X, keeping the length of Y as it is.
+Choice 2: Decrease the length of Y, keeping the length of X as it is.
+As we need to find the longest length, we will be choosing maximum(Choice 1, Choice 2).
+Finally, the Longest Palindromic Subsequence's length will lie at the last cell, i.e., dp[n][n].
+Time Complexity: At first, we reversed the string X to obtain String Y, which gives O(n) time complexity. But, as we compare every character of the two strings using two for loops (one for X and one for Y), time complexity would be O(n^2).
+Space Complexity: O(n^2) extra space for the 2D matrix.
+
+class Solution {
+    public int longestPalindromeSubseq(String s) {
+    int n=s.length();
+    String st="";
+    for(int i=n-1;i>=0;i--)
+    st+=s.charAt(i);
+    int dp[][]=new int[n+1][n+1];
+    for(int i=0;i<=n;i++)
+       dp[i][0]=0;
+    for(int j=0;j<=n;j++)
+       dp[0][j]=0;
+    for(int i=1;i<=n;i++)
+    {
+      for(int j=1;j<=n;j++)
+         {
+                if(X.charAt(i-1)==Y.charAt(j-1))
+                 dp[i][j]=1+dp[i-1][j-1];
+                 else
+                 dp[i][j]=Math.max(dp[i][j-1], dp[i-1][j]);
+         }
+   }
+      return dp[n][n];
+    }
+}
