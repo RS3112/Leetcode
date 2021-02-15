@@ -7,7 +7,9 @@ Choice 1: Decrease the length of X, keeping the length of Y as it is.
 Choice 2: Decrease the length of Y, keeping the length of X as it is.
 As we need to find the longest length, we will be choosing maximum(Choice 1, Choice 2).
 Finally, the Longest Palindromic Subsequence's length will lie at the last cell, i.e., dp[n][n].
+
 Time Complexity: At first, we reversed the string X to obtain String Y, which gives O(n) time complexity. But, as we compare every character of the two strings using two for loops (one for X and one for Y), time complexity would be O(n^2).
+
 Space Complexity: O(n^2) extra space for the 2D matrix.
 
 class Solution {
