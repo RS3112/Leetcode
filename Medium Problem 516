@@ -1,4 +1,4 @@
-This problem can easily be reduced to Longest Common Sequence (LCS) problem. 
+This problem can easily be reduced to Longest Common Subsequence (LCS) problem. 
 We have to determine the length of the longest palindromic subsequence, which means the length of the longest subsequence with the same left-to-right and right-to-left traversal. Let's say we are given a string X="abfrbaf." Its longest palindromic subsequence is "abrba." If we take another string, which is just reverse of the given string, i.e., Y="fabrfba." Through careful recognization, we can see that the longest common subsequence of X and Y is "abrba" which is the same as the longest palindromic subsequence of string X. Hence, we can implement this program using a dynamic programming approach in the same way we used to solve the longest common subsequence problem.
 We will be using a 2D array to find the LCS's length (X, Y).
 Of Note: The length of the longest common subsequence of two strings X and Y is zero if any of the two strings is null.  Hence we will be initializing the first row and first column with 0. 
